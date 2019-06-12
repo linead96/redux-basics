@@ -1,28 +1,28 @@
-import * as actionTypes from "../actions";
+import * as actionTypes from "../actions/actions";
 
 const initialState = {
   results: []
 };
 
 const reducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case actionTypes.STORE_RESULT: {
       return {
         ...state,
-        results: [...state.results, {id: new Date(), value: action.result}],
-      }
+        results: [...state.results, { id: new Date(), value: action.result }]
+      };
     }
     case actionTypes.DELETE_RESULT: {
       const updatedArray = state.results.filter(result => {
-        return action.resultElId !== result.id
-      })
+        return action.resultElId !== result.id;
+      });
       return {
         ...state,
         results: updatedArray
-      }
+      };
     }
     default: {
-      return state
+      return state;
     }
   }
 };
